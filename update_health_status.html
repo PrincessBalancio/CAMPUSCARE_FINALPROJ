@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Health Status Registration</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard_health.css') }}">
+</head>
+
+<body>
+
+<!-- ======= TOP HEADER BAR ======= -->
+<header class="health-header">
+    <div class="header-left">
+        <h2>School Health Monitoring System</h2>
+    </div>
+
+    <div class="header-right">
+        <span class="hello-text">Hello, <strong>{{ user.name }}</strong></span>
+        <span class="role-text">{{ user.role }}</span>
+    </div>
+</header>
+
+<!-- ======= MAIN CONTAINER ======= -->
+<div class="health-main">
+
+    <!-- HEALTH SUMMARY CARD -->
+    <div class="health-summary-card">
+        <div class="summary-icon">
+            <div class="heartbeat"></div>
+        </div>
+
+        <div class="summary-details">
+            <h3>Health Level Summary</h3>
+
+            <p class="status-label">
+                Status: 
+                <strong class="status-text {{ health_status_class }}">
+                    {{ health_status }}
+                </strong>
+            </p>
+
+            <p class="status-desc">{{ health_status_desc }}</p>
+        </div>
+    </div>
+
+    <!-- USER INFO CARD -->
+    <div class="profile-card">
+        <h3>Student/Teacher Information</h3>
+
+        <div class="profile-info">
+            <p><strong>Name:</strong> {{ user.name }}</p>
+            <p><strong>Student ID:</strong> {{ user.id }}</p>
+            <p><strong>Section:</strong> {{ user.section }}</p>
+            <p><strong>Department:</strong> {{ user.department }}</p>
+        </div>
+    </div>
+
+    <!-- HEALTH FORM CARD -->
+    <div class="health-form-card">
+        <h3>Daily Health Status</h3>
+
+        <form method="POST" class="health-form">
+
+            <label>Temperature (°C)</label>
+            <input type="text" name="temperature" placeholder="Enter your temperature"
+                   value="{{ user.temperature or '' }}" required>
+
+            <label>Symptoms</label>
+            <textarea name="symptoms" placeholder="List your symptoms here" required>{{ user.symptoms or '' }}</textarea>
+
+            <button type="submit" class="submit-btn">Submit Health Status</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
