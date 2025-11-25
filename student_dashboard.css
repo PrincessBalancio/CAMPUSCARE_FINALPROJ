@@ -1,0 +1,161 @@
+/* ---------- Student Dashboard Styles ---------- */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fdf6f6;
+    color: #333;
+}
+
+/* ---------- Dashboard Layout ---------- */
+.student-dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    width: 220px;
+    background-color: #800000; /* maroon */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.sidebar-title {
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+.sidebar-nav .nav-link {
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.sidebar-nav .nav-link:hover,
+.sidebar-nav .nav-link.active {
+    background-color: #b22222; /* lighter maroon */
+    color: white;
+}
+
+.sidebar-nav .logout-btn {
+    background-color: #ff4c4c;
+}
+
+.sidebar-nav .logout-btn:hover {
+    background-color: #cc0000;
+}
+
+/* ---------- Main Content ---------- */
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+.dashboard-header {
+    margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #800000;
+}
+
+/* ---------- Dashboard Cards ---------- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.dashboard-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dashboard-card h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 20px;
+    color: #800000;
+}
+
+.dashboard-card p {
+    margin: 6px 0;
+}
+
+.dashboard-card ul {
+    padding-left: 20px;
+}
+
+.dashboard-card li {
+    margin-bottom: 5px;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* ---------- Card Colors ---------- */
+.health-card {
+    border-left: 5px solid #b22222;
+}
+
+.schedule-card {
+    border-left: 5px solid #800000;
+}
+
+.notifications-card {
+    border-left: 5px solid #ff4c4c;
+}
+
+/* ---------- Buttons ---------- */
+.btn-card {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 18px;
+    background-color: #800000;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-card:hover {
+    background-color: #b22222;
+    transform: translateY(-2px);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .student-dashboard {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 10px;
+    }
+    .sidebar-nav {
+        display: flex;
+        gap: 10px;
+    }
+    .main-content {
+        padding: 20px 10px;
+    }
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
