@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CampusCare</title>
+    <!-- Correct link to CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=1">
+</head>
+<body>
+<header>
+    <h1>CampusCare</h1>
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        {% if session.get('user') == 'admin' %}
+            | <a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a>
+            | <a href="{{ url_for('logout') }}">Logout</a>
+        {% endif %}
+    </nav>
+</header>
+<hr>
+<main>
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>
