@@ -1,0 +1,115 @@
+/* ---------- Body ---------- */
+body {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    background-color: #f7f3f3;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    }
+    
+    /* ---------- Header ---------- */
+    header {
+    background-color: #800000; /* Maroon */
+    color: white;
+    padding: 18px 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    header h1 {
+    margin: 0;
+    font-size: 26px;
+    letter-spacing: 1px;
+    }
+    
+    nav a {
+    color: white;
+    margin: 0 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.25s;
+    }
+    
+    nav a:hover {
+    color: #ffcccc;
+    text-decoration: underline;
+    }
+    
+    /* ---------- Container ---------- */
+    .container {
+    max-width: 600px;
+    margin: 60px auto;
+    background-color: white;
+    padding: 50px;
+    border-radius: 14px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    }
+    
+    /* ---------- Headings ---------- */
+    h2 {
+    color: #800000;
+    margin-bottom: 35px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    }
+    
+    /* ---------- Cards (for links) ---------- */
+    .card {
+    background-color: #f9f5f5;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 12px;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .card a {
+    text-decoration: none;
+    color: #800000;
+    font-weight: 600;
+    font-size: 18px;
+    }
+    
+    .card:hover {
+    background-color: #f2e5e5;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+    
+    /* ---------- Forms ---------- */
+    form input {
+    width: 95%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    }
+    
+    form button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    background-color: #800000;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s, transform 0.25s;
+    }
+    
+    form button:hover {
+    background-color: #660000;
+    transform: translateY(-2px);
+    }
+    
+    /* ---------- Error Messages ---------- */
+    .error {
+    color: #b30000;
+    margin-bottom: 18px;
+    font-weight: 600;
+    }
+    
+    
