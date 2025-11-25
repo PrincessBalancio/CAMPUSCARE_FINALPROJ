@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <!-- MAIN GENERAL STYLES -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- DASHBOARD DESIGN -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard_admin.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="sidebar-title">Admin</div>
+
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ url_for('admin_dashboard') }}">
+                    <img src="{{ url_for('static', filename='icons/dashboard.png') }}" class="sidebar-icon">
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='icons/student.png') }}" class="sidebar-icon">
+                    Student Records
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='icons/teacher.png') }}" class="sidebar-icon">
+                    Teacher Records
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='icons/health.png') }}" class="sidebar-icon">
+                    Health Reports
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='icons/clinic.png') }}" class="sidebar-icon">
+                    Clinic Doctors
+                </a>
+            </li>
+        </ul>
+
+        <a href="{{ url_for('logout') }}" class="logout-btn">
+            <img src="{{ url_for('static', filename='icons/logout.png') }}" class="sidebar-icon">
+            Logout
+        </a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+        <!-- TIME & DATE -->
+        <div class="top-header">
+            <h1>Welcome Clinic Admin!</h1>
+            <div class="date">
+                <span id="day"></span> •
+                <span id="date"></span> •
+                <span id="clock"></span>
+            </div>
+        </div>
+
+        <!-- ICON GRID -->
+        <div class="report-cards dashboard-grid">
+            <div class="dashboard-card big-card">
+                <div class="now-serving-avatar">
+                    <div class="avatar-circle student-avatar"></div>
+                </div>
+                <h3>Student Reports</h3>
+                <p>{{ students|length }} responses</p>
+            </div>
+
+            <div class="dashboard-card big-card">
+                <div class="now-serving-avatar">
+                    <div class="avatar-circle teacher-avatar"></div>
+                </div>
+                <h3>Teacher Reports</h3>
+                <p>{{ teachers|length }} responses</p>
+            </div>
+        </div>
+
+        <!-- RECENT HEALTH REPORTS -->
+        <div class="table-section">
+            <h2 class="patients-title">Recent Health Reports</h2>
+            {% for student_id, student in students.items() %}
+                {% if student.temperature %}
+                    <div class="patient-item">
+                        <span>{{ student.name }} (Student)</span>
+                        <span>Temp: {{ student.temperature }}°C</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% for teacher_id, teacher in teachers.items() %}
+                {% if teacher.temperature %}
+                    <div class="patient-item">
+                        <span>{{ teacher.name }} (Teacher)</span>
+                        <span>Temp: {{ teacher.temperature }}°C</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+<!-- CLOCK SCRIPT -->
+<script>
+    function updateClock() {
+        const now = new Date();
+        const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        document.getElementById("day").innerHTML = days[now.getDay()];
+        document.getElementById("date").innerHTML =
+            now.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+        document.getElementById("clock").innerHTML =
+            now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+</script>
+
+</body>
+</html>
